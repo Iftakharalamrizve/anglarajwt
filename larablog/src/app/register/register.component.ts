@@ -7,12 +7,18 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private regiser : RegisterService) { }
+  constructor(private regiser: RegisterService) { }
 
   ngOnInit() {
   }
-  onFormSubmit(){
-    console.log('hello');
+  onFormSubmit(data){
+
+    const user = {
+      name: data.controls.name.value,
+      email : data.controls.email.value,
+      password : data.controls.password.value
+    };
+    this.regiser.CreateRegister(user);
   }
 
 }
