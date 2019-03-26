@@ -11,12 +11,16 @@ export class LogninService {
   constructor(private http: HttpClient,private token: TokenService) { }
   checkLogin(info) {
     this.http.post( this.loginUrl + 'login', info).subscribe(
-      data => this.handleResponse(data),
-      error => console.log(error)
+      data =>  this.handleResponse(data),
+      error => this.errorInfo(error)
     );
   }
 
   handleResponse(token){
-    this.token.handle(token.access_token);
+    return this.token.handle(token.access_token) ;
+  }
+
+  errorInfo(error){
+    // console.log(error);
   }
 }

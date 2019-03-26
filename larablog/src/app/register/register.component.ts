@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../service/register.service';
+import { Router } from '@angular/router';
+import { TokenService } from '../service/token.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -7,7 +9,7 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private regiser: RegisterService) { }
+  constructor(private regiser: RegisterService,private route: Router, private token : TokenService) { }
 
   ngOnInit() {
   }
@@ -19,6 +21,7 @@ export class RegisterComponent implements OnInit {
       password : data.controls.password.value
     };
     this.regiser.CreateRegister(user);
+    this.route.navigateByUrl('/dashboard');
   }
 
 }
