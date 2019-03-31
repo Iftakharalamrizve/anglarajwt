@@ -1,3 +1,4 @@
+import { AuthGuard } from './Guard/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -6,7 +7,6 @@ import './register/register.component.css';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuard } from './guard/auth.guard';
 import { GuestGuard } from './Guard/guest.guard';
 
 const routes: Routes = [

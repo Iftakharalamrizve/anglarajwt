@@ -1,5 +1,6 @@
+import { IEmployee } from './../modal/iemployee';
 import { Component, OnInit } from '@angular/core';
-
+import { DashboardService } from '../service/dashboard.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public employees = [];
+  errorMsg: any;
+  public record: any = '' ;
+  constructor(private dashboard: DashboardService) { }
 
   ngOnInit() {
+    this.dashboard.get_user_lis()
+    .subscribe(data => this.dataslice(data),
+      error => console.log(error));
   }
-
+  public dataslice(data) {
+    this.record = data.response;
+  }
 }

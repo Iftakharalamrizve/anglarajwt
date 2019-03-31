@@ -10,19 +10,19 @@ import {TokenService} from '../service/token.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public loogedIn :boolean;
+  public loogedIn: boolean;
   constructor(
     private auth: AuthService,
     private route: Router,
-    private token : TokenService
+    private token: TokenService
   ) { }
 
   ngOnInit() {
-    this.auth.authStatus.subscribe(value=>this.loogedIn=value);
+    this.auth.authStatus.subscribe(value => this.loogedIn = value);
   }
 
 
-  logout(event : MouseEvent){
+  logout(event: MouseEvent){
     event.preventDefault();
     this.token.remove();
     this.auth.changeAuthstatus(false);

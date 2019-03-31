@@ -33,7 +33,7 @@ export class TokenService {
   }
 
   isValid(){
-    const checkToken =this.get(); 
+    const checkToken =this.get();
     if(checkToken){
       const payLoad =this.payload(checkToken);
       if(payLoad){
