@@ -8,10 +8,17 @@ import {IEmployee} from '../modal/iemployee';
   providedIn: 'root'
 })
 export class DashboardService {
-  public url: any = 'http://127.0.0.1:8000/api/auth/user';
+  public url: any = 'http://127.0.0.1:8000/api/auth/user/';
   constructor(private http: HttpClient) { }
   get_user_lis(): Observable<IEmployee[]>{
     return this.http.get<IEmployee[]>(this.url)
+  }
+
+  update_user_info(info,id){
+    this.http.post( this.url+id, info).subscribe(
+      data =>  console.log(data),
+      error => console.log(error)
+    );
   }
 
 }

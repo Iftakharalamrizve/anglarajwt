@@ -30,5 +30,6 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::get('user', 'UserController@index');
+    Route::post('user/{id}', 'UserController@update');
 
 });

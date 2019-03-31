@@ -7,7 +7,6 @@ import { DashboardService } from '../service/dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
   public employees = [];
   errorMsg: any;
   public record: any = '' ;
@@ -20,5 +19,13 @@ export class DashboardComponent implements OnInit {
   }
   public dataslice(data) {
     this.record = data.response;
+  }
+
+  updateInfo(userUpdate){
+    const data={
+      name:userUpdate.name,
+      email:userUpdate.email
+    }
+    this.dashboard.update_user_info(data,userUpdate.id);
   }
 }
